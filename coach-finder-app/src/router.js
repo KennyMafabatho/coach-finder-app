@@ -1,10 +1,10 @@
 import {createRouter, createWebHistory} from 'vue-router';
 
 import CoachDetails from './pages/coaches/CoachDetails.vue';
-import CoachesList from './pages/coaches/CoachList.vue';
+import CoachesList from './pages/coaches/CoachesList.vue';
 import CoachRegistration from './pages/coaches/CoachRegistration.vue';
 import ContactCoach from './pages/requests/ContactCoach.vue';
-import RequestRecieved from './pages/requests/RequestRecieved.vue';
+import RequestsReceived from './pages/requests/RequestsReceived.vue';
 import NotFound from './pages/NotFound.vue';
 
 const router = createRouter({
@@ -34,7 +34,7 @@ const router = createRouter({
     },
     {
       path:'/requests', 
-      component: RequestRecieved
+      component: RequestsReceived
     },
     {
       path: '/:notFound(.*)',
