@@ -44,6 +44,7 @@ export default {
   data(){
     return{
       isLoading: false,
+      error: null,
       activeFilters:{
         frontend: true,
         backend: true,
@@ -82,9 +83,13 @@ export default {
       this.activeFilters = updatedFilters;
     },
    async loadCoaches(){
-      this.isLoading = true,
-      await this.$store.dispatch('coaches/loadCoaches');
-      this.isLoading = false
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch('coaches/loadCoaches');
+      }catch(error){
+        this.error = error.message || 'Error Occurred !';
+      }
+      this.isLoading = false;
     }
   },
 }

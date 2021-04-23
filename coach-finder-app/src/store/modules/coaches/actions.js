@@ -30,13 +30,12 @@ export default{
    );
    
    const responseData = await response.json();
-
    if(!response.ok){
-     //errror
+     const error = new Error(responseData.message || 'Failed to Load');
+     throw error;
    }
 
    const coaches = [];
-
    for(const key in responseData){
      const coach = {
       id: key,
