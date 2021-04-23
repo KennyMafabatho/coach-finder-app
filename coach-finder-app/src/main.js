@@ -14,6 +14,7 @@ const app = createApp(App)
 app.use(router);
 app.use(store);
 
+app.component('base-dialog', BaseDialog);
 app.component('base-card', BaseCard);
 app.component('base-spinner', BaseSpinner);
 app.component('base-button', BaseButton);

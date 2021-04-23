@@ -1,5 +1,7 @@
 <template>
-<div>
+  <base-dialog :show="!!error" title="Error!" @close="handleError">
+    <p>{{ error }}</p>
+  </base-dialog>
   <section>
     <coach-filter @change-filter="setFilters"></coach-filter>
   </section>
@@ -26,7 +28,6 @@
       <h3 v-else>No Coaches Found.</h3>
     </base-card>
   </section>
-</div>
 </template>
 
 <script>
@@ -34,12 +35,14 @@
 import CoachFilter from '../../components/coaches/CoachFilter.vue';
 import CoachItem from '../../components/coaches/CoachItem.vue';
 import BaseButton from '../../components/ui/BaseButton.vue';
+import BaseDialog from '../../components/ui/BaseDialog.vue';
 
 export default {
   components: { 
     CoachItem,
     BaseButton,
-    CoachFilter 
+    CoachFilter,
+    BaseDialog 
   },
   data(){
     return{
@@ -90,6 +93,9 @@ export default {
         this.error = error.message || 'Error Occurred !';
       }
       this.isLoading = false;
+    },
+    handleError(){
+      this.error = null;
     }
   },
 }
