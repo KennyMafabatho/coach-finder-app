@@ -63,7 +63,7 @@ export default {
     },
     filteredCoaches(){
      const coaches = this.$store.getters['coaches/coaches'];
-     return coaches.filter(coach => {
+     return coaches.filter((coach) => {
        if(this.activeFilters.frontend && coach.areas.includes('frontend')){
          return true;
        }
@@ -92,7 +92,7 @@ export default {
       try {
         await this.$store.dispatch('coaches/loadCoaches', {forceRefresh: refresh});
       }catch(error){
-        this.error = error.message || 'Error Occurred !';
+        this.error = error.message || 'Something went wrong!';
       }
       this.isLoading = false;
     },

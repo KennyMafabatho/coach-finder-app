@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-dialog :show="!!error" title="Error!" @close="handleError">
+    <base-dialog :show="!!error" title="An error occurred!" @close="handleError">
       <p>{{ error }}</p>
     </base-dialog>
     <section>
@@ -11,10 +11,10 @@
         <base-spinner v-if="isLoading"></base-spinner>
         <ul v-else-if="hasRequests && !isLoading">
           <requests-item 
-            v-for="req in receivedRequests" 
-            :key="req.id" 
-            :email="req.userEmail"
-            :message="req.message"
+            v-for="request in receivedRequests" 
+            :key="request.id" 
+            :email="request.userEmail"
+            :message="request.message"
           ></requests-item>
         </ul>
         <h3 v-else>You haven't received any requests yet!</h3>
@@ -51,9 +51,9 @@ export default {
    async loadRequests(){
       this.isLoading = true;
       try{
-      await this.$store.dispatch('requests/fetchRequests');
+        await this.$store.dispatch('requests/fetchRequests');
       }catch(error){
-        this.error = error.message || 'Something went wrong';
+        this.error = error.message || 'Failed to fetch requests!';
       }
       this.isLoading = false;
    },
