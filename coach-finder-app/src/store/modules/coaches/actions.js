@@ -24,12 +24,16 @@ export default{
       id: userId
     });
   },
-  async loadCoaches(context){
+  async loadCoaches(context, payload){
+    if(!payload.forceRefresh && !context.getters.shouldUpdate){
+      return;
+    }
+
    const response = await fetch(
      `https://vue-http-demo-36ade-default-rtdb.firebaseio.com/coaches.json`
    );
-   
    const responseData = await response.json();
+  
    if(!response.ok){
      const error = new Error(responseData.message || 'Failed to Load');
      throw error;
@@ -47,6 +51,7 @@ export default{
      };
      coaches.push(coach);
    }
-   context.commit('setCoaches', coaches)
+   context.commit('setCoaches', coaches);
+   context.commit('setFetchTimestamp');
   }
 };
