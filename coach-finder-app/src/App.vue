@@ -52,8 +52,7 @@ body {
   transition: all 0.3s ease-in;
 }
 
-.route-enter-to{}
-
+.route-enter-to,
 .route-leave-from{
   opacity: 1;
   transform: translateY(0);
