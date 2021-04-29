@@ -9,7 +9,7 @@
           <li v-if="isLoggedIn">
             <router-link to="/requests">Requests</router-link>
           </li>
-          <li>
+          <li v-else>
             <router-link to="/auth">Login</router-link>
           </li>
           <li v-if="isLoggedIn">
@@ -26,12 +26,13 @@ export default {
     components: { BaseButton },
   computed:{
     isLoggedIn(){
-      return this.$store.isAuthenticated;
+      return this.$store.getters.isAuthenticated;
     }
   },
   methods:{
     logout(){
       this.$store.dispatch('logout');
+      this.$router.replace('/coaches');
     }
   }
 }
