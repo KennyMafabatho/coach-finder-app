@@ -12,14 +12,29 @@
 import TheHeader from './components/Layouts/TheHeader.vue';
 
 export default {
-    components: { 
-      TheHeader
-       },
-  
+  components: { 
+    TheHeader
+    },
+    computed:{
+      didAutoLogout(){
+        return this.$store.getters.didAutoLogout;
+      }
+    },
+    created(){
+      this.$store.dispatch('tryLogin');
+    },
+    watch:{
+      didAutoLogout(currentValue, oldValue){
+        if(currentValue && currentValue != oldValue){
+          this.$router.replace('/coaches');
+        }
+      }
+    }
 }
 </script>
 
 <style>
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 * {
