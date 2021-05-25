@@ -63,7 +63,7 @@ export default {
       return this.$store.getters.isAuthenticated;
     },
     isCoach (){
-      return this.$store.getters['coaches/isCoach']
+      return this.$store.getters['coaches/isCoach'];
     },
     filteredCoaches(){
      const coaches = this.$store.getters['coaches/coaches'];

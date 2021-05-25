@@ -5,7 +5,7 @@ export default{
     return context.dispatch('auth',{
       ...payload,
       mode: 'login'
-    })
+    });
 },
   async signup(context,payload){
     return context.dispatch('auth',{
