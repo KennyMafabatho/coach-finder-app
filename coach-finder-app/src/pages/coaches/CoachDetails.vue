@@ -29,7 +29,8 @@ export default {
   props: ['id'],
   data(){
     return{
-      selectedCoach: null
+      selectedCoach: null, 
+      currentpath:''
     };
   },
   computed:{
@@ -46,11 +47,20 @@ export default {
       return this.selectedCoach.description;
     },
     contactLink(){
-      return this.$route.path + '/contact';
+     return '/coaches/' + this.id + '/contact';
+  
     }
   },
+  // Watch:{
+  //   $route(to, _, next){
+  //     if(to.currentRoute.meta.isContact == this.$router.currentRoute.path){
+  //       next()
+  //     }else{
+  //       next()
+  //     }
+  //   }
+  // },
   created(){
-    //console.log(selectedCoach);
     this.selectedCoach = this.$store.getters['coaches/coaches'].find(
       (coach) => coach.id === this.id
     );

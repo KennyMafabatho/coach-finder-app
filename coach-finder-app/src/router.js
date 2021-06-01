@@ -50,7 +50,7 @@ const router = createRouter({
       children: [
         { 
           path: 'contact', 
-          component: ContactCoach
+          component: ContactCoach,
         }
       ]
     },
@@ -86,5 +86,7 @@ router.beforeEach(function(to,_, next){
     next();
   }
 })
+
+
 
 export default router;
